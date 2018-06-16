@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Internt Banking</title>
+
+  <link type="text/css" rel="stylesheet" href="mystyle.css" />
+
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+    <meta charset="utf-8">
+        
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script>
+        function selectCountryCode() {
+            
+            var code = document.getElementById("selCountry").value;
+            document.getElementById("country_Code1").value = code;
+	}
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+    
+    $("#wrong_account_message").hide();
+    $("#wrong_CIF_message").hide();
+    $("#wrong_branch_message").hide();
+    $("#wrong_mobile_message").hide();
+//    $("#wrong_txnRights_message").hide();
+    
+    var wrong_account = false;
+    var wrong_CIF = false;
+    var wrong_branch = false;
+    var wrong_mobile = false;
+    //var wrong_txnRights = false;
+            
+            $("#accountNo").focusout(function(){
+                check_accountNo();
+            });
+            
+            $("#cifNo").focusout(function(){
+                check_cifNo();
+            });
+            
+            $("#branchCode").focusout(function(){
+                check_branchCode();
+            });
+            
+            $("#mobileNo").focusout(function(){
+                check_mobileNo();
+            });
+            
+                   
+                
+            function check_accountNo() {
+                
+                var accountNo_len = $("#accountNo").val().length;
+                var accountNo = $("#accountNo").val();
+
+                
+                if (accountNo_len <= 0) 
+                {
+			         
+                    $("#wrong_account_message").html("Enter account number");
+                    $("#wrong_account_message").show();
+                    wrong_account = true;
+                    
+                } 
+                else 
+                    {
+                        for (i = 0; i < accountNo_len; i++) 
+                        {
+                            if (!(accountNo.charAt(i) >= '0' && accountNo.charAt(i) <= '9')) {
+                                $("#wrong_account_message").html("Account number is invalid");
+                                $("#wrong_account_message").show();
+                                wrong_account = true;
+                            } else
+                                {
+                                    $("#wrong_account_message").hide();
+                                }
+                        }
+                        if (!(accountNo_len == '17'	|| accountNo_len == '11' || accountNo_len == '13')) 
+                        {
+                            $("#wrong_account_message").html("Enter valid Account number");
+                            $("#wrong_account_message").show();
+
+                            wrong_account = true;
+                        } else
+                        {
+                            $("#wrong_account_message").hide();
+                        }
+                    }
+
+            }
+            
+            
+            function check_cifNo() {
+                
+                var cifNo_len = $("#cifNo").val().length;
+                var cifNo = $("#cifNo").val();
+                
+                
+                if (cifNo_len <= 0) 
+                {
+			         
+                    $("#wrong_CIF_message").html("Enter customer number");
+                    $("#wrong_CIF_message").show();
+                    wrong_CIF = true;
+                    
+                } 
+                else 
+                    {
+                        for (i = 0; i < cifNo_len; i++) 
+                        {
+                            if (!(cifNo.charAt(i) >= '0' && cifNo.charAt(i) <= '9')) 
+                            {
+                                $("#wrong_CIF_message").html("CIF number is invalid");
+                                $("#wrong_CIF_message").show();
+                                wrong_CIF = true;
+                            } 
+                            else
+                            {
+                                $("#wrong_CIF_message").hide();
+                            }
+                        }
+                        if (!(cifNo_len == '17'	|| cifNo_len == '11' || cifNo_len == '13')) 
+                        {
+                            $("#wrong_CIF_message").html("Enter valid Customer Identification Number");
+                            $("#wrong_CIF_message").show();
+
+                            wrong_CIF = true;
+                        } else
+                        {
+                            $("#wrong_CIF_message").hide();
+                        }
+                    }
+
+             }
+            
+            function check_branchCode()
+            {
+                var branchCode_len = $("#branchCode").val().length;
+                var branchCode = $("#branchCode").val();
+                
+                if (branchCode_len <= 0)
+                {
+                    $("#wrong_branch_message").html('Enter Branch Code');
+                    $("#wrong_branch_message").show();
+                    wrong_branch = true;
+                }
+                if (!(branchCode_len == '5')) 
+                {
+                    $("#wrong_branch_message").html('Enter valid Branch Code');
+                    $("#wrong_branch_message").show();
+                    wrong_branch = true;
+                } 
+                else
+                {
+                    $("#wrong_branch_message").hide();
+                }
+                
+            }
+            
+            
+            function check_mobileNo() {
+                
+                var mobileNo_len = $("#mobileNo").val().length;
+                var mobileNo = $("#cifNo").val();
+                
+            if (mobileNo_len <= 0)
+            {
+                $("#wrong_mobile_message").html('Enter Mobile number');
+                $("#wrong_mobile_message").show();
+                wrong_mobile = true;
+            } 
+            else
+            {
+                 for (i = 0; i < mobileNo_len; i++) 
+                {
+                    if (!(mobileNo.charAt(i) >= '0' && mobileNo.charAt(i) <= '9')) 
+                    {
+                        $("#wrong_mobile_message").html("Mobile number is invalid");
+                        $("#wrong_mobile_message").show();
+                        wrong_mobile = true;
+                    } 
+                    else
+                    {
+                        $("#wrong_mobile_message").hide();
+                    }
+                }
+            }
+                if (!(mobileNo_len == '10')) 
+                {
+                    $("#wrong_mobile_message").html('Enter valid Mobile number');
+                    $("#wrong_mobile_message").show();
+                    wrong_mobile = true;
+                } 
+               
+
+            }
+
+});
+        
+         $(function () {
+        
+            var wrong_txnRights = false;
+             var wrong_country = false;
+            
+            $("#btnSubmit").click(function() {
+               
+                var rights = $("#txnRights");
+                var country = $("#selCountry");
+                
+                
+                if(rights.val() == "--Select Transaction Rights--")
+                {
+                    $("#wrong_txnRights_message").html("Please select Transaction Rights");   
+                    wrong_txnRights = true;
+                }
+                else
+                {
+                    $("#wrong_txnRights_message").hide();
+                }
+                
+                if(country.val() == "9999")
+                {
+                    $("#wrong_country_message").html("Please select your country");    
+                    wrong_country = true;
+                }
+                else
+                {
+                    $("#wrong_country_message").hide();   
+                }
+                
+                
+            });
+        });
+    </script>
+</head>
+<body style="background-color: #1E222B; font-family: 'Merriweather Sans', Arial, sans-serif;">
+
+    
+    <br /><br />
+   
+<div class="container font-size">
+    <h3 class="well">User Driver Registration - New User</h3>
+	<div class="col-lg-12 col-md-12 col-sm-12 well">
+
+        <p class="mandatory_txt">
+						Mandatory fields are marked with an asterisk (*)
+					</p>
+    <form name="registration" method="post">
+	<div class="row">
+        <div class="form-group">
+						<label class="control-label col-sm-3 col-md-3 col-comn">Account Number <span
+							class="mandatory_txt">*</span> </label>
+						<div class="col-sm-4 col-md-3">
+							<input type="text" class="form-control" name="accountNo"
+								id="accountNo" maxlength="17" value="" onCopy="return false"
+								onPaste="return false">
+                            <span id="wrong_account_message" class="mandatory_txt"></span>
+						</div>
+						<div class="col-sm-5 col-md-5 col-comn toppadding">
+							&nbsp;
+							(Account Number is available in your passbook and/or statement of account)
+						</div>
+					</div> <br/> <br/><br/>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-3 col-comn">CIF Number <span
+							class="mandatory_txt">*</span> </label>
+						<div class="col-sm-4 col-md-3">
+							<input type="text" class="form-control" name="cifNo" id="cifNo"
+								size="20" maxlength="20" value="" onCopy="return false"
+								onPaste="return false">
+                            <span id="wrong_CIF_message" class="mandatory_txt"></span>
+						</div>
+						<div class="col-sm-5 col-md-5 col-comn toppadding">
+							&nbsp;
+							(CIF Number is available in your passbook and/or statement of account)
+						</div>
+					</div><br/><br/><br/>
+					
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-3 col-comn">Branch Code <span
+							class="mandatory_txt">*</span> </label>
+						<div class="col-sm-4 col-md-3">
+							<input type="text" class="form-control" name="branchCode"
+								id="branchCode" size="10" maxlength="5" value="" onCopy="return false"
+								onPaste="return false">
+                            <span id="wrong_branch_message" class="mandatory_txt"></span>
+						</div>
+					
+						
+						<div class="col-sm-2 col-md-3 col-comn toppadding">
+							&nbsp;
+							(Please enter 5 digit branch code )
+						</div>
+
+					</div> <br/> <br/><br/>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-3 col-comn">Country </label>
+						<div class="col-sm-4 col-md-3">
+							<select class="form-control" name="countryCode"
+								title="Select Country" id="selCountry" onchange="selectCountryCode()">
+								
+								<option value="9999">
+									--
+									Select Country
+									--
+								</option>
+								
+									<option value=93>
+										Afghanistan
+									</option>
+								
+									<option value=355>
+										Albania
+									</option>
+								
+									<option value=213>
+										Algeria
+									</option>
+								
+									<option value=684>
+										American Samoa
+									</option>
+								
+									<option value=376>
+										Andorra
+									</option>
+								
+									<option value=244>
+										Angola
+									</option>
+								
+									<option value=1264>
+										Anguilla
+									</option>
+								
+									<option value=1268>
+										Antigua and Barbuda
+									</option>
+								
+									<option value=54>
+										Argentina
+									</option>
+								
+									<option value=374>
+										Armenia
+									</option>
+								
+									<option value=297>
+										Aruba
+									</option>
+								
+									<option value=247>
+										Ascension
+									</option>
+								
+									<option value=61>
+										Australia
+									</option>
+								
+									<option value=672>
+										Australian Ext.Terr.
+									</option>
+								
+									<option value=43>
+										Austria
+									</option>
+								
+									<option value=994>
+										Azerbaijan
+									</option>
+								
+									<option value=973>
+										Bahrain
+									</option>
+								
+									<option value=880>
+										Bangladesh
+									</option>
+								
+									<option value=1242>
+										Barbados/Bahamas (Commonwealth of the)
+									</option>
+								
+									<option value=375>
+										Belarus
+									</option>
+								
+									<option value=32>
+										Belgium
+									</option>
+								
+									<option value=501>
+										Belize
+									</option>
+								
+									<option value=229>
+										Benin
+									</option>
+								
+									<option value=1441>
+										Bermuda
+									</option>
+								
+									<option value=975>
+										Bhutan
+									</option>
+								
+									<option value=591>
+										Bolivia
+									</option>
+								
+									<option value=387>
+										Bosnia - Herzegovina
+									</option>
+								
+									<option value=267>
+										Botswana
+									</option>
+								
+									<option value=55>
+										Brazil
+									</option>
+								
+									<option value=1284>
+										British Virgin Islands/Virgin Island (BRI)
+									</option>
+								
+									<option value=673>
+										Brunei Darussalam
+									</option>
+								
+									<option value=359>
+										Bulgaria
+									</option>
+								
+									<option value=226>
+										Burkina Faso
+									</option>
+								
+									<option value=257>
+										Burundi
+									</option>
+								
+									<option value=855>
+										Cambodia
+									</option>
+								
+									<option value=237>
+										Cameroon
+									</option>
+								
+									<option value=238>
+										Cape Verde
+									</option>
+								
+									<option value=1345>
+										Cayman Islands
+									</option>
+								
+									<option value=236>
+										Central African Rep.
+									</option>
+								
+									<option value=235>
+										Chad
+									</option>
+								
+									<option value=56>
+										Chile
+									</option>
+								
+									<option value=86>
+										China
+									</option>
+								
+									<option value=57>
+										Colombia
+									</option>
+								
+									<option value=243>
+										Congo
+									</option>
+								
+									<option value=242>
+										Congo-Brazzaville
+									</option>
+								
+									<option value=682>
+										Cook Islands
+									</option>
+								
+									<option value=506>
+										Costa Rica
+									</option>
+								
+									<option value=385>
+										Croatia
+									</option>
+								
+									<option value=53>
+										Cuba
+									</option>
+								
+									<option value=357>
+										Cyprus
+									</option>
+								
+									<option value=420>
+										Czech Republic
+									</option>
+								
+									<option value=850>
+										DPR Korea (North)
+									</option>
+								
+									<option value=45>
+										Denmark
+									</option>
+								
+									<option value=246>
+										Diego Garcia
+									</option>
+								
+									<option value=253>
+										Djibouti
+									</option>
+								
+									<option value=1767>
+										Dominica (Commonwealth of)
+									</option>
+								
+									<option value=1809>
+										Dominican Republic
+									</option>
+								
+									<option value=670>
+										East Timor
+									</option>
+								
+									<option value=593>
+										Ecuador
+									</option>
+								
+									<option value=20>
+										Egypt
+									</option>
+								
+									<option value=503>
+										El Salvador
+									</option>
+								
+									<option value=240>
+										Equatorial Guinea
+									</option>
+								
+									<option value=291>
+										Eritrea
+									</option>
+								
+									<option value=372>
+										Estonia
+									</option>
+								
+									<option value=251>
+										Ethiopia
+									</option>
+								
+									<option value=691>
+										F.S. Micronesia
+									</option>
+								
+									<option value=500>
+										Falkland Islands
+									</option>
+								
+									<option value=298>
+										Faroe Islands
+									</option>
+								
+									<option value=679>
+										Fiji
+									</option>
+								
+									<option value=358>
+										Finland
+									</option>
+								
+									<option value=33>
+										France
+									</option>
+								
+									<option value=689>
+										French Polynesia
+									</option>
+								
+									<option value=241>
+										Gabon
+									</option>
+								
+									<option value=220>
+										Gambia
+									</option>
+								
+									<option value=49>
+										Germany
+									</option>
+								
+									<option value=233>
+										Ghana
+									</option>
+								
+									<option value=350>
+										Gibraltar
+									</option>
+								
+									<option value=44>
+										Great Britain
+									</option>
+								
+									<option value=30>
+										Greece
+									</option>
+								
+									<option value=299>
+										Greenland
+									</option>
+								
+									<option value=1473>
+										Grenada
+									</option>
+								
+									<option value=590>
+										Guadeloupe
+									</option>
+								
+									<option value=1671>
+										Guam
+									</option>
+								
+									<option value=502>
+										Guatemala
+									</option>
+								
+									<option value=594>
+										Guiana (French)
+									</option>
+								
+									<option value=224>
+										Guinea
+									</option>
+								
+									<option value=245>
+										Guinea-Bissau
+									</option>
+								
+									<option value=592>
+										Guyana
+									</option>
+								
+									<option value=509>
+										Haiti
+									</option>
+								
+									<option value=504>
+										Honduras
+									</option>
+								
+									<option value=852>
+										Hong Kong
+									</option>
+								
+									<option value=36>
+										Hungary
+									</option>
+								
+									<option value=354>
+										Iceland
+									</option>
+								
+									<option value=91>
+										India
+									</option>
+								
+									<option value=62>
+										Indonesia
+									</option>
+								
+									<option value=871>
+										Inmarsat (Atl-East)
+									</option>
+								
+									<option value=874>
+										Inmarsat (Atl-West)
+									</option>
+								
+									<option value=873>
+										Inmarsat (Indian O.)
+									</option>
+								
+									<option value=872>
+										Inmarsat (Pacific)
+									</option>
+								
+									<option value=870>
+										Inmarsat SNAC
+									</option>
+								
+									<option value=800>
+										Int&#039;l Freephone
+									</option>
+								
+									<option value=98>
+										Iran
+									</option>
+								
+									<option value=964>
+										Iraq
+									</option>
+								
+									<option value=353>
+										Ireland
+									</option>
+								
+									<option value=972>
+										Israel
+									</option>
+								
+									<option value=39>
+										Italy/Vatican City State
+									</option>
+								
+									<option value=225>
+										Ivory Coast
+									</option>
+								
+									<option value=1876>
+										Jamaica
+									</option>
+								
+									<option value=81>
+										Japan
+									</option>
+								
+									<option value=962>
+										Jordan
+									</option>
+								
+									<option value=254>
+										Kenya
+									</option>
+								
+									<option value=686>
+										Kiribati
+									</option>
+								
+									<option value=82>
+										Korea (South)
+									</option>
+								
+									<option value=965>
+										Kuwait
+									</option>
+								
+									<option value=996>
+										Kyrgyz Republic
+									</option>
+								
+									<option value=856>
+										Laos
+									</option>
+								
+									<option value=371>
+										Latvia
+									</option>
+								
+									<option value=961>
+										Lebanon
+									</option>
+								
+									<option value=266>
+										Lesotho
+									</option>
+								
+									<option value=231>
+										Liberia
+									</option>
+								
+									<option value=218>
+										Libya
+									</option>
+								
+									<option value=423>
+										Liechtenstein
+									</option>
+								
+									<option value=370>
+										Lithuania
+									</option>
+								
+									<option value=352>
+										Luxembourg
+									</option>
+								
+									<option value=853>
+										Macau
+									</option>
+								
+									<option value=389>
+										Macedonia
+									</option>
+								
+									<option value=261>
+										Madagascar
+									</option>
+								
+									<option value=265>
+										Malawi
+									</option>
+								
+									<option value=60>
+										Malaysia
+									</option>
+								
+									<option value=960>
+										Maldives
+									</option>
+								
+									<option value=223>
+										Mali
+									</option>
+								
+									<option value=356>
+										Malta
+									</option>
+								
+									<option value=692>
+										Marshall Islands
+									</option>
+								
+									<option value=596>
+										Martinique/French Antilles
+									</option>
+								
+									<option value=222>
+										Mauritania
+									</option>
+								
+									<option value=230>
+										Mauritius
+									</option>
+								
+									<option value=269>
+										Mayotte, Comoros Is.
+									</option>
+								
+									<option value=52>
+										Mexico
+									</option>
+								
+									<option value=808>
+										Midway Island
+									</option>
+								
+									<option value=373>
+										Moldova
+									</option>
+								
+									<option value=377>
+										Monaco
+									</option>
+								
+									<option value=976>
+										Mongolia
+									</option>
+								
+									<option value=1664>
+										Montserrat
+									</option>
+								
+									<option value=212>
+										Morocco
+									</option>
+								
+									<option value=258>
+										Mozambique
+									</option>
+								
+									<option value=95>
+										Myanmar (Burma)
+									</option>
+								
+									<option value=264>
+										Namibia
+									</option>
+								
+									<option value=674>
+										Nauru
+									</option>
+								
+									<option value=977>
+										Nepal
+									</option>
+								
+									<option value=31>
+										Netherlands
+									</option>
+								
+									<option value=599>
+										Netherlands Antilles
+									</option>
+								
+									<option value=869>
+										Nevis
+									</option>
+								
+									<option value=687>
+										New Caledonia
+									</option>
+								
+									<option value=64>
+										New Zealand/Chatham Island (New Zealand)
+									</option>
+								
+									<option value=505>
+										Nicaragua
+									</option>
+								
+									<option value=227>
+										Niger
+									</option>
+								
+									<option value=234>
+										Nigeria
+									</option>
+								
+									<option value=683>
+										Niue
+									</option>
+								
+									<option value=6723>
+										Norfolk Island
+									</option>
+								
+									<option value=47>
+										Norway
+									</option>
+								
+									<option value=968>
+										Oman
+									</option>
+								
+									<option value=92>
+										Pakistan
+									</option>
+								
+									<option value=680>
+										Palau
+									</option>
+								
+									<option value=970>
+										Palestine
+									</option>
+								
+									<option value=507>
+										Panama
+									</option>
+								
+									<option value=675>
+										Papua New Guinea
+									</option>
+								
+									<option value=595>
+										Paraguay
+									</option>
+								
+									<option value=51>
+										Peru
+									</option>
+								
+									<option value=63>
+										Philippines
+									</option>
+								
+									<option value=48>
+										Poland
+									</option>
+								
+									<option value=351>
+										Portugal
+									</option>
+								
+									<option value=1787>
+										Puerto Rico
+									</option>
+								
+									<option value=974>
+										Qatar
+									</option>
+								
+									<option value=995>
+										Rep. of Georgia
+									</option>
+								
+									<option value=262>
+										Reunion Island
+									</option>
+								
+									<option value=40>
+										Romania
+									</option>
+								
+									<option value=7>
+										Russia, Kazakhstan
+									</option>
+								
+									<option value=250>
+										Rwanda
+									</option>
+								
+									<option value=290>
+										Saint Helena
+									</option>
+								
+									<option value=1869>
+										Saint Kitts and Nevis
+									</option>
+								
+									<option value=1758>
+										Saint Lucia
+									</option>
+								
+									<option value=508>
+										Saint Pierre and Miquelon
+									</option>
+								
+									<option value=1784>
+										Saint Vincent and the Grenadines
+									</option>
+								
+									<option value=1670>
+										Saipan Island/Rota Island/Northern Mariana Island
+									</option>
+								
+									<option value=378>
+										San Marino
+									</option>
+								
+									<option value=239>
+										Sao Tome and Principe (Democratic Republic of)
+									</option>
+								
+									<option value=881>
+										Satellite services
+									</option>
+								
+									<option value=966>
+										Saudi Arabia
+									</option>
+								
+									<option value=221>
+										Senegal
+									</option>
+								
+									<option value=248>
+										Seychelles
+									</option>
+								
+									<option value=232>
+										Sierra Leone
+									</option>
+								
+									<option value=65>
+										Singapore
+									</option>
+								
+									<option value=421>
+										Slovakia
+									</option>
+								
+									<option value=386>
+										Slovenia
+									</option>
+								
+									<option value=677>
+										Solomon Islands
+									</option>
+								
+									<option value=252>
+										Somalia
+									</option>
+								
+									<option value=27>
+										South Africa
+									</option>
+								
+									<option value=211>
+										South Sudan
+									</option>
+								
+									<option value=34>
+										Spain
+									</option>
+								
+									<option value=94>
+										Sri Lanka
+									</option>
+								
+									<option value=249>
+										Sudan
+									</option>
+								
+									<option value=597>
+										Suriname
+									</option>
+								
+									<option value=268>
+										Swaziland
+									</option>
+								
+									<option value=46>
+										Sweden
+									</option>
+								
+									<option value=41>
+										Switzerland
+									</option>
+								
+									<option value=963>
+										Syria
+									</option>
+								
+									<option value=886>
+										Taiwan
+									</option>
+								
+									<option value=992>
+										Tajikistan
+									</option>
+								
+									<option value=255>
+										Tanzania
+									</option>
+								
+									<option value=66>
+										Thailand
+									</option>
+								
+									<option value=228>
+										Togo
+									</option>
+								
+									<option value=690>
+										Tokelau
+									</option>
+								
+									<option value=676>
+										Tonga
+									</option>
+								
+									<option value=1868>
+										Trinidad and Tobago
+									</option>
+								
+									<option value=216>
+										Tunisia
+									</option>
+								
+									<option value=90>
+										Turkey
+									</option>
+								
+									<option value=993>
+										Turkmenistan
+									</option>
+								
+									<option value=1649>
+										Turks and Caicos Islands
+									</option>
+								
+									<option value=688>
+										Tuvalu
+									</option>
+								
+									<option value=1>
+										USA / CANADA
+									</option>
+								
+									<option value=256>
+										Uganda
+									</option>
+								
+									<option value=380>
+										Ukraine
+									</option>
+								
+									<option value=971>
+										United Arab Emirates
+									</option>
+								
+									<option value=598>
+										Uruguay
+									</option>
+								
+									<option value=998>
+										Uzbekistan
+									</option>
+								
+									<option value=678>
+										Vanuatu
+									</option>
+								
+									<option value=379>
+										Vatican City
+									</option>
+								
+									<option value=58>
+										Venezuela
+									</option>
+								
+									<option value=84>
+										Viet Nam
+									</option>
+								
+									<option value=1340>
+										Virgin Island (USA)
+									</option>
+								
+									<option value=681>
+										Wallis and Futuna
+									</option>
+								
+									<option value=685>
+										Western Samoa
+									</option>
+								
+									<option value=967>
+										Yemen
+									</option>
+								
+									<option value=381>
+										Yugoslavia/Serbia
+									</option>
+								
+									<option value=260>
+										Zambia
+									</option>
+								
+									<option value=263>
+										Zimbabwe
+									</option>
+								
+							</select>
+                                <span id="wrong_country_message" class="mandatory_txt"></span>
+						</div>
+						<div class="col-sm-5 col-md-3 col-comn toppadding">
+							For Canada, choose USA/CANADA
+						</div>
+					</div> <br/> <br/><br/>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-3 col-comn"
+							for="amount">Registered mobile Number <span class="mandatory_txt">*</span>
+						</label> <input name="country" type="hidden" title="Country" id="country">
+						<div class="col-sm-2 col-md-1 col-xs-4">
+							<input class="form-control" name="country_Code1" type="text"
+								size="3" maxlength="3" title="Country Code" id="country_Code1"
+								value=''
+								disabled="true">
+						</div>
+						<div class="col-sm-2 col-md-2 col-xs-8">
+							<input class="form-control" type="text" name="mobileNo" size="11"
+								maxlength="11" title="mobileNo" id="mobileNo" value="" onCopy="return false"
+								onPaste="return false">
+                            <span id="wrong_mobile_message" class="mandatory_txt"></span>
+						</div>
+						<div class="col-sm-5 col-md-4 col-xs-12 col-comn toppadding">
+							&nbsp;
+							(Please enter Mobile Number registered in Core )
+						</div>
+					</div> <br/> <br/><br/>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-3 col-comn" for="">Facility Required <span
+							class="mandatory_txt">*</span> </label>
+						<div class="col-sm-4 col-md-3">
+							<select class="form-control"
+								title="Transaction Rights" id="txnRights">
+                                
+								<option value="--Select Transaction Rights--">
+									--
+									Select Transaction Rights
+									--
+								</option>
+								<option value="09">
+									Full Transaction Rights
+								</option>
+								<option value="08">
+									Limited Transaction Rights
+								</option>
+								<option value="05">
+									View Rights
+								</option>
+							</select>
+                            <span id="wrong_txnRights_message" class="mandatory_txt"></span>
+						</div>
+        
+        </div>
+        
+    </div><br/> 
+        <div align="center">
+            <button type="button" class="btn btn-lg btn-info" id="btnSubmit">Submit</button>					
+        </div>
+        </form>
+    </div></div>
+        </body>
+	</html>

@@ -1,0 +1,189 @@
+<html>
+<head>
+<link href="../jobstyle.css" type="text/css" rel="stylesheet" />
+<title>Education Counselling</title>
+</head>
+<body>
+<div id="page">
+<div class="block">
+<img height="90" width="400" style="max-width:120px;background-position: top left;" src="../images/sl.gif" />
+<h1>&ensp;Education Counselling</h1>
+<p style="font-size:20px; font-family:calibri light; margin-top:-20;">&ensp;&ensp;<q>If you have a dream, don&#39;t just sit there. Gather courage to believe that you can succeed and leave no stone unturned to make it a reality.</q> </p>
+<br>
+</div>
+<div class="menu">
+<style>
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+	font-family:Arial;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+		z-index:100;
+}
+</style>
+
+<ul>
+  <li><a href="../index.html">HOME</a></li>
+  <li><a href="news.html">NEWS</a></li>
+  <li class="dropdown">
+    <a href="#" class="dropbtn">COURSES</a>
+    <div class="dropdown-content">
+      <a href="graduation.htm">GRADUATION</a>
+     <a href="postgraduation.html">POST GRADUATION</a>
+    </div>
+  </li>
+</ul>
+
+
+
+</div>
+
+<div id="slider"><marquee scrollamount="10" bgcolor="#333333" behavior="alternate">
+<img src="../images/abc.png" height="250px">
+<img src="../images/abc (1).jpg" height="250px">
+<img src="../images/abc (2).jpg" height="250px">
+<img src="../images/abc (3).jpg" height="250px">
+<img src="../images/abc (4).jpg" height="250px">
+<img src="../images/abc.png" height="250px">
+<img src="../images/522dd90bc16feachievers-point-study-abroad-counselling.jpg" height="250px">
+<img src="../images/10_photo_40468.jpg" height="250px">
+<img src="../images/education-consultancy-500x500.png" height="250px">
+<img src="../images/counciling-360x237.jpg" height="250px">
+
+</marquee>
+
+</div>
+<div id="sidebar">
+<ul>
+<li><a href="#">PROJECTS</a></li>
+<li><a href="#">ITEM</a></li>
+
+<li><a href="#">RESULT</a></li>
+<li><a href="#">MEMBERS</a></li>
+<li><a href="#">FAQ</a></li>
+<li><a href="login.html">LOG IN</a></li>
+<li><a href="form.html">NEW USER</a></li>
+</ul>
+
+</div>
+
+<div id="rightbar">
+<iframe src="contact us.html" style="border-style:none" height="500" width="230" align="right"></iframe>
+</div>
+
+
+<div id="content">
+<center><h1 style="text-align:justify font-size:20pt ">Sign Up, !Here</h1></center>
+<form  name="rf" method="post" action="login.html" onSubmit="return validf()" >
+<fieldset>
+<legend>Registration:User</legend>
+<table style="text-align:justify">
+</br>
+</br>
+<tr><td><b>Name:</b></td><td><input name="cn" type="text" placeholder="Your Name" required="required" </td></tr>
+<tr><td><b>Email:</b></td><td><input name="ce" type="email" placeholder="Your Email" required/></td></tr>
+<tr><td><b>Password:</b></td><td><input  name="cp" type="password" placeholder="Password" required/></td></tr>
+<tr><td><b>Re-password:</b></td><td><input type="password" placeholder="Confirm-password" required/></td></tr>
+<tr><td><b>Gender:</b></td><td>Male<input name="gender" type="radio" value="male" checked>Female<input name="gender" type="radio" value="female"/></td></tr>
+<tr><td><b>Contact No.:</b> </td><td><input name="cno" type="text" placeholder="Your Contact No." required/></td></tr>
+<tr><td><b>City:</b></td><td>
+<Select name="city" required="required">
+<option>Select</option>
+<option>Ludhiana</option>
+<option>Chandigarh</option>
+<option>Patiala</option>
+<option>Amritsar</option>
+<option>Hoshiarpur</option>
+<option>Amritsar</option>
+<option>Hoshiarpur</option>
+<option>Amritsar</option>
+<option>Hoshiarpur</option>
+<option>Amritsar</option>
+<option>Hoshiarpur</option>
+</Select name="course"></td></tr>
+<tr><td><b>Select Course</b></td><td><select>
+<option value="#Engineering">Engineering</option>
+<option Value="Pharmacy">Pharmacy</option>
+<option value="Law">Law</option>
+<option value="Bussiness">Bussiness</option>
+<option value="Bsc.">Bsc.</option>
+<option value="Computer">Computer Application</option>
+<option value="Arts">Arts</option>
+<option value="Hospitality">Hospitality and Tourism</option>
+</select>
+</td></tr>
+<tr><td></td><td><input type="button" value="Sign up"  onClick="validf()"> <input type="button" value="Cancel" onClick="go()" ></td></tr></td></tr>
+</table>
+</br>
+</br>
+</fieldset>
+</form>
+<script>
+function validf() {
+    var x = document.forms["rf"]["cn"].value;
+	var y = document.forms["rf"]["ce"].value;
+	var z = document.forms["rf"]["cp"].value;
+	var f = document.forms["rf"]["cno"].value;
+	var city = document.forms["rf"]["city"].value;
+    if ((x == null || x == "") || (y == null || y == "") || (z == null || z == "") || (f == null || f == "") || (city=="Select")){
+        alert("Required must be filled out");
+        return false;
+    }
+	else{
+	 alert("Congratulation! Your Successfully Registered");
+	 window.location.href = 'login.html';
+	}
+	
+}
+function go() {
+ window.alert('You are Redirect to Home Page')
+ window.location.href = '../index.html';
+}
+</script>
+
+ 
+</div>
+
+<div id="endline">
+<a href="privacy.html">PRIVACY</a>
+<a href="termsofuse.html">TERM & CONDITION</a>
+<a href="#">HELP</a>
+</div>
+
+</div>
+</body>
+
+</html>
+

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1457930446 source:c:\users\nilesh\documents\miniproject\main.cpp
+	<iostream>
+	<cstring>
+
+1458146255 source:e:\current work folder\miniproject\main.cpp
+	<iostream>
+	<cstring>
+
+1461565050 source:e:\current work folder\project cse202\miniproject\main.cpp
+	<iostream>
+	<cstring>
+	<conio.h>
+	<fstream>
+

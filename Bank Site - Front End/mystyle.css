@@ -1,0 +1,155 @@
+.navbar {
+    background-color:#f4440e;
+    
+    /*font-family: 'Merriweather', 'Helvetica Neue', 'Arial', 'sans-serif';*/
+}
+.navbar li a, .navbar .navbar-brand {
+      color: #fff;
+  }
+ul li a:hover{
+    color: black;
+}
+.navbar-toggle {
+       color: white !important;
+        border-color: transparent;
+  }
+
+.icon-bar {
+  color: black;
+  border-color: black;
+  background-color: black;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Image Slider */
+.carousel-inner img {
+   width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+img {
+    width: 100%;
+    height: 400px !important;
+}
+
+
+/* Panels */
+
+
+ .panel {
+      border: 1px solid #f4440e !important;
+      background-color: #1E222B !important;
+      border-radius:0 !important;
+  }
+  .panel-heading {
+      color: #fff !important;
+      background-color: #f4440e !important;
+      padding: 0px;
+      border-bottom: 0px !important;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+
+.panel-body {
+    color: #fff;
+    height: 200px;
+}
+.panel-body h3 {
+    color: #f4440e;
+    text-align: left;
+}
+.panel-body p {
+    text-align: justify;
+    color: #eee;
+}
+.loan
+{
+    color:#eee;
+    text-align: justify;
+    font-size: 15px;
+}
+.loan-image {
+    border: 3px solid #f4440e;
+    border-radius: 50px;
+    padding: 35px;
+}
+.img-circle
+{
+    height: 250px !important;
+    width: 250px;
+}
+.loan-body
+{
+    height: auto !important;    
+}
+.black
+{
+    color: #1E222B !important;
+}
+
+.mandatory_txt {
+    color: #f37856;
+    font-size: 10px;
+    font-style: italic;
+}
+.toppadding {
+    padding-top: 3px;
+}
+.font-size
+{
+    font-size: 13px;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 200px;
+}
+
+
+.btnstyle
+{
+    background-color:#f4440e;
+    color: white;
+	text-align: center;
+    text-decoration: none;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+	width: 150px ;
+    height: 150px ;  
+    border-radius: 12px;
+}
+
+.btnstyle:hover
+{
+    opacity : 0.8;
+	background-color:#f2e7d5;
+	color:black;
+}

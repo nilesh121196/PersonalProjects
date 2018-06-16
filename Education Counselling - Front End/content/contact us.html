@@ -1,0 +1,48 @@
+<html>
+<head>
+</head>
+<body>
+<div style="color:red">
+<style>
+
+	dt{color: white;
+      text-decoration: none;
+	  font-family:Comic Sans MS;
+	  }
+	  h1{ font-family:Impact;
+		  color: white;
+		  }
+</style>
+ <form method="post">
+ <h1>Need Help!</h1>
+ <dt>*First Name:</dt><input type="text" name="firstname"  id="firstn" required />
+ <dt>*Last Name:</dt><input type="text" name="lastname" id="lastn"  required="required"/>
+ <dt>*Email:</dt><input type="text" name="email"  id="emailn"  required="required" />
+ <dt>*Contact Number:</dt><input type="text" name="tel-mobile"  id="tel-mobilen"  required="required" />
+ <dt>*Subject:</dt><input type="text" name="subject"  id="subjectn" required/>
+ <dt>*Message :</dt><textarea name="message" id="messagen" required></textarea>
+ <dt>How did you Know Us?</dt>
+ <select name="feedback1" id="feedback1" >
+                      <option value="">Select</option>
+                      <option value="Facebook">Facebook</option>
+                      <option value="Twitter">Twitter</option>
+                      <option value="Internet">Internet</option>
+                      <option value="Newspaper">Newspaper</option>
+                      <option value="Radio">Radio</option>
+                      <option value="Friend">Friend</option>
+                      <option value="gecsalesteam">GEC Sales Team</option>
+                      <option value="Campaign">Campaign</option>
+                      <option value="Others">Others</option>
+                      </select>
+					  </br>
+					  </br>
+<input name="submit" type="submit" value="Send Message"  onclick="myfun()" />
+</form>
+<script>
+function myfun(){
+    	window.alert('Message Successfully Sent!');
+	}
+</script>
+</div>
+</body>
+</html>
