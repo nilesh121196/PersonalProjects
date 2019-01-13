@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Babble.pndashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Babble"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid   Background="Wheat">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*" />
+            <RowDefinition Height="109*"/>
+           
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Fill="Black" />
+        <Button x:ConnectionId='1' x:Name="pnDashBack" Content="&#xE016;" FontFamily="Segoe MDL2 Assets" FontSize="40"  Background="#f48342" Height="66" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="66"                         />
+        <TextBlock x:ConnectionId='2' x:Name="pnNamed" TextAlignment="Right" Foreground="White" FontSize="35"  TextWrapping="Wrap" Height="66" Text="YourName" VerticalAlignment="Top" Margin="385,0,50,0"/>
+
+        <Grid Grid.Row="1" >
+            <TextBox x:ConnectionId='3' Height="23" HorizontalAlignment="Left" Margin="126,22,0,0" Name="serverIP" VerticalAlignment="Top" Width="157" />
+            <TextBlock x:ConnectionId='4' Text="Server IP:" Height="32" FontSize="25" HorizontalAlignment="Left" Margin="8,20,0,0" Name="label1" VerticalAlignment="Top" />
+            <TextBox x:ConnectionId='5' Height="23" HorizontalAlignment="Left" Margin="369,22,0,0" Name="serverPort" VerticalAlignment="Top" Width="102" />
+            <TextBlock x:ConnectionId='6' Text="Port:" Height="32" FontSize="25" HorizontalAlignment="Left" Margin="308,20,0,0" Name="label2" VerticalAlignment="Top" Width="58" />
+            <TextBox x:ConnectionId='7' Height="500" Margin="11,71,247,0" Name="chatBox" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible" />
+            <TextBlock x:ConnectionId='8' Text="Messages from:" Height="37" FontSize="25" Margin="0,71,38,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="178" />
+            <TextBox x:ConnectionId='9' Height="463" HorizontalAlignment="Right" Margin="0,108,18,0" Name="messagesFrom" VerticalAlignment="Top" Width="200" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            <TextBlock x:ConnectionId='10' Text="Local Name:" Height="33" FontSize="25" Margin="709,19,436,0" Name="label4" VerticalAlignment="Top" />
+            <TextBox x:ConnectionId='11' Height="23" Margin="867,22,247,0" Name="localName" VerticalAlignment="Top" />
+            <TextBlock x:ConnectionId='12' Text="Message:" Height="40" HorizontalAlignment="Left" FontSize="25" Margin="13,582,0,0" Name="label5" VerticalAlignment="Top" Width="107" />
+            <TextBox x:ConnectionId='13' Height="23" Margin="140,588,217,0" Name="messageText" VerticalAlignment="Top" />
+            <Button x:ConnectionId='14'  Content="Send" Height="34" HorizontalAlignment="Right" Margin="0,586,14,0" Name="sendMessageButton" VerticalAlignment="Top" Width="181"                                  />
+            <CheckBox x:ConnectionId='15' Content="Enable Server" Height="16" HorizontalAlignment="Right" Margin="0,8,0,0" x:Name="enableServer" VerticalAlignment="Top" Width="172"                               />
+            <CheckBox x:ConnectionId='16' Content="Use Encryption" Height="16" HorizontalAlignment="Right" Margin="0,39,0,0" x:Name="useEncryptionBox" VerticalAlignment="Top" Width="172"/>
+        </Grid>
+
+
+    </Grid>
+</Page>
+

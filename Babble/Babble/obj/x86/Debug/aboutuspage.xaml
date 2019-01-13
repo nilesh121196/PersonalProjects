@@ -1,0 +1,16 @@
+﻿<Page  Height="685"
+    x:Class="Babble.aboutuspage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Babble"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Wheat">
+        <TextBlock Text="Babble" FontSize="100" Margin="484,187,486,381" ></TextBlock>
+        <TextBlock Text="For more Information Contact us on : support@neelstech.net" Foreground="Black" FontSize="24" Margin="316,339,314,312"></TextBlock>
+        <TextBlock Text="All Right Reserved - 2017"  FontSize="24" Margin="504,382,505,264"></TextBlock>
+    </Grid>
+</Page>
+
